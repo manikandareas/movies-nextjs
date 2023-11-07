@@ -51,6 +51,8 @@ export interface TrendingMovies extends Trending {}
 
 export interface TrendingAll extends Trending {}
 
+export interface TrendingSeries extends Trending {}
+
 export interface TVSeries {
   backdrop_path: string;
   first_air_date: string;

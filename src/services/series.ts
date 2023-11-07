@@ -1,5 +1,10 @@
 import { axiosInstances } from "@/common/lib/axios";
-import { PopularSeries, TMDBResponses, TopRatedSeries } from "@/types/tmdb";
+import {
+  PopularSeries,
+  TMDBResponses,
+  TopRatedSeries,
+  TrendingSeries,
+} from "@/types/tmdb";
 
 interface PopularProps {
   page?: number | 1;
@@ -15,4 +20,16 @@ type TopRatedProps = {
 export const getTopRatedSeries = async ({ page }: TopRatedProps) => {
   const response = await axiosInstances.get(`/tv/top_rated?page=${page || 1}`);
   return response.data as TMDBResponses<TopRatedSeries[]>;
+};
+
+type TrendingSeriesProps = {
+  time_window?: string | "day";
+};
+export const getTrendingSeries = async ({
+  time_window,
+}: TrendingSeriesProps) => {
+  const response = await axiosInstances.get(
+    `/trending/tv/${time_window || "day"}`
+  );
+  return response.data as TMDBResponses<TrendingSeries[]>;
 };

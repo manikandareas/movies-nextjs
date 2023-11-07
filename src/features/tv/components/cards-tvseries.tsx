@@ -1,17 +1,17 @@
 "use client";
-import { getPopularMovies, getTopRatedMovies } from "@/services/movies";
 import { useQueries } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
-import CardMovieContent from "./card-movie-content";
+import { useState } from "react";
+import CardMovieContent from "./card-tvseries-content";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
 import { buttonVariants } from "@/components/ui/button";
+import { getPopularSeries, getTopRatedSeries } from "@/services/series";
 
 const CardsMovie = () => {
   const results = useQueries({
     queries: [
-      { queryKey: ["popularMovies"], queryFn: () => getPopularMovies({}) },
-      { queryKey: ["topRatedMovies"], queryFn: () => getTopRatedMovies({}) },
+      { queryKey: ["popularSeries"], queryFn: () => getPopularSeries({}) },
+      { queryKey: ["topRatedSeries"], queryFn: () => getTopRatedSeries({}) },
     ],
   });
 
@@ -35,7 +35,7 @@ const CardsMovie = () => {
     >
       <div className="w-full px-4 flex flex-col gap-6 md:max-w-7xl mx-auto">
         <TabsList className="flex flex-col md:flex-row gap-1.5 items-center justify-between bg-transparent text-primary mb-6 md:mb-0">
-          <h1 className="uppercase font-bold text-2xl ">Movies</h1>
+          <h1 className="uppercase font-bold text-2xl ">TV SERIES</h1>
           <div className="flex gap-2">
             <TabsTrigger value="popular" asChild>
               <button

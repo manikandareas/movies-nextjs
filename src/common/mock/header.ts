@@ -31,7 +31,7 @@ export const asideMenus = [
       },
       {
         name: "movies",
-        path: "/movies",
+        path: "/movie",
         icon: PlaySquare,
       },
       {

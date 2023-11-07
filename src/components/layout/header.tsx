@@ -56,7 +56,9 @@ const AppHeader = () => {
                   ) : (
                     <Link
                       href={list.path}
-                      className="flex gap-3 uppercase items-center"
+                      className={`flex gap-3 uppercase items-center  py-2 px-3 rounded-md ${
+                        list.path === pathname && "bg-red-600 text-white"
+                      }`}
                     >
                       <list.icon /> {list.name}
                     </Link>
