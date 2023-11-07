@@ -6,13 +6,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import HeroSliderContent from "./hero-content-slider";
-import { getTrendingAll } from "@/services/all";
 import { useQuery } from "@tanstack/react-query";
+import { getTrendingMovies } from "@/services/movies";
 
 const HeroSlider = () => {
   const { data } = useQuery({
-    queryKey: ["trendingAll"],
-    queryFn: () => getTrendingAll({}),
+    queryKey: ["trendingMovies"],
+    queryFn: () => getTrendingMovies({}),
   });
 
   return (

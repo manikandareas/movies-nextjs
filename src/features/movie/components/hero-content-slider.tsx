@@ -30,7 +30,7 @@ const HeroContentSlider = ({
     >
       <div className="absolute inset-0 bg-gradient-to-tr dark:from-black dark:via-black/80  from-white via-white/80 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r dark:from-black from-white/60 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t dark:from-black dark:via-black/20  from-white via-white/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t dark:from-black/80 dark:via-black/20  from-white via-white/50 to-transparent" />
       <article className="flex flex-col gap-8 p-4 z-10">
         <h1 className="font-bold md:text-5xl text-3xl">
           {name ? name : title}

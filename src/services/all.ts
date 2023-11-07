@@ -4,7 +4,9 @@ import { TMDBResponses, TrendingAll } from "@/types/tmdb";
 type TrendingAllProps = {
   time_window?: string | "day";
 };
-export const getTrendingAll = async ({ time_window }: TrendingAllProps) => {
+export const getTrendingAll = async ({
+  time_window = "day",
+}: TrendingAllProps) => {
   const response = await axiosInstances.get(
     `/trending/all/${time_window || "day"}`
   );

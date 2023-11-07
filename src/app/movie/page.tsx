@@ -1,21 +1,21 @@
 import AppHeader from "@/components/layout/header";
-import CardsSlider from "@/features/home/components/cards-slider";
-import HeroSlider from "@/features/home/components/hero-slider";
-import { homeHooks } from "@/features/home/services/home.hook";
+import CardsMovie from "@/features/movie/components/cards-movie";
+import HeroSlider from "@/features/movie/components/hero-slider";
 
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 import "react-circular-progressbar/dist/styles.css";
+import { movieHooks } from "@/features/movie/services/movie.hook";
 
-export default async function Home() {
-  const { queryClient } = homeHooks();
+export default async function MoviesPage() {
+  const { queryClient } = movieHooks();
 
   return (
     <main className="relative">
       <AppHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
         <HeroSlider />
-        <CardsSlider />
+        <CardsMovie />
       </HydrationBoundary>
     </main>
   );

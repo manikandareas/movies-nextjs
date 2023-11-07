@@ -1,7 +1,24 @@
 import { ModeToggle } from "@/components/ui/toggle-theme";
 import { Home, PlaySquare, Tv, Search } from "lucide-react";
 
-export const headerLists = ["movies", "tv series", "search"];
+export const headerLists = [
+  {
+    name: "home",
+    path: "/",
+  },
+  {
+    name: "movies",
+    path: "/movie",
+  },
+  {
+    name: "tv series",
+    path: "/tv",
+  },
+  {
+    name: "search",
+    path: "/search",
+  },
+];
 
 export const asideMenus = [
   {
@@ -19,7 +36,7 @@ export const asideMenus = [
       },
       {
         name: "tv series",
-        path: "/tv-series",
+        path: "/tv",
         icon: Tv,
       },
       {

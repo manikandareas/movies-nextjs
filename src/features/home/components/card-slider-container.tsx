@@ -35,7 +35,7 @@ const CardSliderContainer = ({
     };
   }, []);
   return (
-    <article className="w-full px-4 flex flex-col gap-8 md:max-w-7xl mx-auto">
+    <article className="w-full px-4 flex flex-col gap-8 md:max-w-7xl mx-auto mb-8 md:mb-14 ">
       <div className="flex flex-col items-start px-4 md:px-0">
         <h1 className="uppercase font-bold text-2xl ">{title}</h1>
         <span className="w-24 h-1 bg-red-600" />
@@ -43,14 +43,14 @@ const CardSliderContainer = ({
       <Swiper
         grabCursor={true}
         spaceBetween={0}
-        slidesPerView={windowSize.innerWidth < 762 ? 2 : 5}
+        slidesPerView={windowSize.innerWidth < 762 ? 2 : 4}
         style={{ width: "100%", height: "max-content" }}
       >
         {data.map((movie) => (
           <SwiperSlide
             key={movie.id}
-            className="md:h-[27rem] md:w-[17rem]"
-            style={{ width: "100%", height: "27rem" }}
+            className="md:h-[33rem] w-full"
+            style={{ width: "100%", maxHeight: "33rem" }}
           >
             <CardSliderContent
               poster_path={movie.poster_path}

@@ -3,11 +3,13 @@ import { asideMenus, headerLists } from "@/common/mock/header";
 import { AlignJustify } from "lucide-react";
 import { ModeToggle } from "../ui/toggle-theme";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { useHeader } from "./header.hook";
+import { usePathname, useRouter } from "next/navigation";
 
 const AppHeader = () => {
   const { isAside, setIsAside } = useHeader();
+  const pathname = usePathname();
+
   return (
     <>
       <header className="md:hidden fixed w-screen z-10 ">
@@ -65,7 +67,7 @@ const AppHeader = () => {
           ))}
         </aside>
       </header>
-      <header className="hidden md:block fixed w-screen  z-10 transition-all ease-in">
+      <header className="hidden md:block fixed w-screen z-10 transition-all ease-in">
         <nav className="w-full p-8 h-14 flex gap-8 items-center ">
           <h1 className="font-bold text-2xl">
             Logo<span className="text-red-600">Film</span>
@@ -74,12 +76,12 @@ const AppHeader = () => {
             {headerLists.map((nav, i) => (
               <li key={i}>
                 <Link
-                  href={"#"}
-                  className={`uppercase text-sm font-medium px-3 py-2 rounded-md active:bg-red-600 active:text-white ${
-                    i === 0 && "bg-red-600"
+                  href={nav.path}
+                  className={`uppercase text-sm font-medium px-3 py-2 rounded-md active:bg-red-600 focus:bg-red-600  active:text-white ${
+                    nav.path === pathname && "bg-red-600 text-white"
                   }`}
                 >
-                  {nav}
+                  {nav.name}
                 </Link>
               </li>
             ))}
