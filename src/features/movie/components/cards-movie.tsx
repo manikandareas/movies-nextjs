@@ -34,7 +34,7 @@ const CardsMovie = () => {
       className="w-screen dark:bg-black mb-10 flex-col gap-4"
     >
       <div className="w-full px-4 flex flex-col gap-6 md:max-w-7xl mx-auto">
-        <TabsList className="flex flex-col md:flex-row gap-1.5 items-center justify-between bg-transparent text-primary mb-6 md:mb-0">
+        <TabsList className="flex flex-col md:flex-row gap-1.5 items-center justify-between bg-transparent text-primary mb-10 md:mb-0">
           <h1 className="uppercase font-bold text-2xl ">Movies</h1>
           <div className="flex gap-2">
             <TabsTrigger value="popular" asChild>

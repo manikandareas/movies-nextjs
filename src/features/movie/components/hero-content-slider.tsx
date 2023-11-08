@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { Play } from "lucide-react";
 import { useTheme } from "next-themes";
-import { convertToMaxLengthDescription } from "@/common/lib/utils";
+import { convertToMaxLengthDescription, getMovieGenreById, getSeriesGenreById } from "@/common/lib/utils";
 
 interface Props {
   backdrop_path: string;
@@ -11,6 +11,7 @@ interface Props {
   overview: string;
   vote_average: number;
   title: string;
+  genres: number[]
 }
 const HeroContentSlider = ({
   title,
@@ -18,6 +19,7 @@ const HeroContentSlider = ({
   name,
   overview,
   vote_average,
+  genres
 }: Props) => {
   const { theme } = useTheme();
 
@@ -54,12 +56,16 @@ const HeroContentSlider = ({
               },
             }}
           />
-          <Badge className="bg-red-600 text-primary w-fit h-fit text-white">
-            Action
-          </Badge>
-          <Badge className="bg-red-600 text-primary w-fit h-fit text-white">
-            Action
-          </Badge>
+          {genres.slice(0, 3).map((id) => (
+            <Badge
+              key={id}
+              className="bg-red-600 text-primary w-fit h-fit text-white"
+            >
+              {getMovieGenreById(id)
+                ? getMovieGenreById(id)
+                : getSeriesGenreById(id)}
+            </Badge>
+          ))}
         </div>
 
         <p className="max-w-2xl">

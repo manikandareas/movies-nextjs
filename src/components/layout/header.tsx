@@ -4,7 +4,8 @@ import { AlignJustify } from "lucide-react";
 import { ModeToggle } from "../ui/toggle-theme";
 import Link from "next/link";
 import { useHeader } from "./header.hook";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { cn } from "@/common/lib/utils";
 
 const AppHeader = () => {
   const { isAside, setIsAside } = useHeader();
@@ -17,7 +18,12 @@ const AppHeader = () => {
           <button onClick={() => setIsAside(!isAside)}>
             <AlignJustify />
           </button>
-          <h1 className="font-extrabold text-2xl">
+          <h1
+            className={cn(
+              "font-extrabold text-2xl transition-all ease-in",
+              isAside ? "-translate-x-5" : "translate-x-0"
+            )}
+          >
             Logo<span className="text-red-600">Film</span>
           </h1>
         </nav>

@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { movieGenres, seriesGenres } from "../mock/genres";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -27,5 +28,20 @@ export const getTitleWithIndex = (index: number) => {
       return "Top Rated Series";
     default:
       return "";
+  }
+};
+
+export const getMovieGenreById = (id: number) => {
+  for (const genre of movieGenres) {
+    if (genre.id === id) {
+      return genre.name;
+    }
+  }
+};
+export const getSeriesGenreById = (id: number) => {
+  for (const genre of seriesGenres) {
+    if (genre.id === id) {
+      return genre.name;
+    }
   }
 };

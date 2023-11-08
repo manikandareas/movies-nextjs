@@ -23,6 +23,7 @@ const HeroSlider = () => {
             backdrop_path={movie.backdrop_path}
             name={movie.name}
             title={movie.title}
+            genres={movie.genre_ids}
             overview={movie.overview}
             vote_average={movie.vote_average}
           />

@@ -24,6 +24,7 @@ const HeroSlider = () => {
             name={movie.name}
             title={movie.title}
             overview={movie.overview}
+            genres={movie.genre_ids}
             vote_average={movie.vote_average}
           />
         </SwiperSlide>
