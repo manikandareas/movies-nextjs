@@ -2,17 +2,17 @@
 import React from "react";
 import { useQueries } from "@tanstack/react-query";
 import CardSliderContainer from "./card-slider-container";
-import { getPopularMovies, getTopRatedMovies } from "@/services/movies";
-import { getPopularSeries, getTopRatedSeries } from "@/services/series";
+import { getMoviesPopular, getMoviesTopRated } from "@/services/movies";
+import { getSeriesPopular, getSeriesTopRated } from "@/services/series";
 import { getTitleWithIndex } from "@/common/lib/utils";
 
 const CardsSlider = () => {
   const results = useQueries({
     queries: [
-      { queryKey: ["popularMovies"], queryFn: () => getPopularMovies({}) },
-      { queryKey: ["popularSeries"], queryFn: () => getPopularSeries({}) },
-      { queryKey: ["topRatedMovies"], queryFn: () => getTopRatedMovies({}) },
-      { queryKey: ["topRatedSeries"], queryFn: () => getTopRatedSeries({}) },
+      { queryKey: ["popularMovies"], queryFn: () => getMoviesPopular({}) },
+      { queryKey: ["popularSeries"], queryFn: () => getSeriesPopular({}) },
+      { queryKey: ["topRatedMovies"], queryFn: () => getMoviesTopRated({}) },
+      { queryKey: ["topRatedSeries"], queryFn: () => getSeriesTopRated({}) },
     ],
   });
 

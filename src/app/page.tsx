@@ -1,6 +1,6 @@
+import JumbotronSliders from "@/components/homepage/jumbotron-sliders";
 import AppHeader from "@/components/layout/header";
 import CardsSlider from "@/features/home/components/cards-slider";
-import HeroSlider from "@/features/home/components/hero-slider";
 import { homeHooks } from "@/features/home/services/home.hook";
 
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
@@ -14,7 +14,7 @@ export default async function Home() {
     <main className="relative">
       <AppHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <HeroSlider />
+        <JumbotronSliders queryFn="all" queryKey={["trendingAll"]} />
         <CardsSlider />
       </HydrationBoundary>
     </main>
