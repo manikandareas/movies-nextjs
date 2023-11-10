@@ -1,5 +1,5 @@
 import { axiosInstances } from "@/common/lib/axios";
-import { TMDBResponses, TrendingAll } from "@/types/tmdb";
+import { TMDBResponses, TrendingAll } from "@/types";
 
 type TrendingAllProps = {
   time_window?: string | "day";

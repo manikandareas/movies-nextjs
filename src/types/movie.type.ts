@@ -1,9 +1,4 @@
-export interface TMDBResponses<T> {
-  page: number;
-  results: T;
-  total_pages: number;
-  total_results: number;
-}
+import { Trending } from ".";
 
 export interface Movies {
   adult: boolean;
@@ -24,11 +19,11 @@ export interface Movies {
   first_air_date: string;
 }
 
-export interface PopularMovies extends Movies {}
+export interface MoviesPopular extends Movies {}
 
-export interface TopRatedMovies extends Movies {}
+export interface MoviesTopRated extends Movies {}
 
-export interface DetailsMovie {
+export interface MovieDetails {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: string;
@@ -70,7 +65,7 @@ export interface DetailsMovie {
   vote_count: number;
 }
 
-export interface CreditsMovie {
+export interface MovieCredits {
   id: number;
   cast: {
     adult: boolean;
@@ -102,7 +97,7 @@ export interface CreditsMovie {
   }[];
 }
 
-export interface ImagesMovie {
+export interface MovieImages {
   backdrops: {
     aspect_ratio: number;
     height: number;
@@ -133,7 +128,7 @@ export interface ImagesMovie {
   }[];
 }
 
-export interface VideosMovie {
+export interface MovieVideos {
   id: number;
   results: {
     iso_639_1: string;
@@ -149,49 +144,28 @@ export interface VideosMovie {
   }[];
 }
 
-export interface Trending {
+export interface MovieResult {
   adult: boolean;
   backdrop_path: string;
+  genre_ids: number[];
   id: number;
-  name: string;
-  title: string;
   original_language: string;
   original_title: string;
   overview: string;
-  poster_path: string;
-  media_type: string;
-  genre_ids: number[];
   popularity: number;
+  poster_path: string;
   release_date: string;
+  title: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
 }
 
-export interface TrendingMovies extends Trending {}
-
-export interface TrendingAll extends Trending {}
-
-export interface TrendingSeries extends Trending {}
-
-export interface TVSeries {
-  backdrop_path: string;
-  first_air_date: string;
-  genre_ids: number[];
-  id: number;
-  name: string;
-  title: string;
-  origin_country: string[];
-  original_language: string;
-  original_name: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  vote_average: number;
-  vote_count: number;
-  release_date: string;
+export interface MovieSimilar {
+  page: number;
+  results: MovieResult[];
+  total_pages: number;
+  total_results: number;
 }
 
-export interface PopularSeries extends TVSeries {}
-
-export interface TopRatedSeries extends TVSeries {}
+export interface MoviesTrending extends Trending {}

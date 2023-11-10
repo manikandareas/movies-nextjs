@@ -1,75 +1,76 @@
 import { axiosInstances } from "@/common/lib/axios";
 import {
-  CreditsMovie,
-  DetailsMovie,
-  ImagesMovie,
-  PopularMovies,
+  MovieCredits,
+  MovieDetails,
+  MovieImages,
+  MovieSimilar,
+  MoviesPopular,
   TMDBResponses,
-  TopRatedMovies,
-  TrendingMovies,
-  VideosMovie,
-} from "@/types/tmdb";
+  MoviesTopRated,
+  MoviesTrending,
+  MovieVideos,
+} from "@/types";
 
 interface PopularMoviesProps {
   page?: number | 1;
 }
-export const getPopularMovies = async ({ page }: PopularMoviesProps) => {
+export const getMoviesPopular = async ({ page }: PopularMoviesProps) => {
   const response = await axiosInstances.get(`/movie/popular?page=${page || 1}`);
-  return response.data as TMDBResponses<PopularMovies[]>;
+  return response.data as TMDBResponses<MoviesPopular[]>;
 };
 
 type TopRatedProps = {
   page?: number;
 };
-export const getTopRatedMovies = async ({ page }: TopRatedProps) => {
+export const getMoviesTopRated = async ({ page }: TopRatedProps) => {
   const response = await axiosInstances.get(
     `/movie/top_rated?page=${page || 1}`
   );
-  return response.data as TMDBResponses<TopRatedMovies[]>;
+  return response.data as TMDBResponses<MoviesTopRated[]>;
 };
 
 type TrendingMoviesProps = {
   time_window?: string | "day";
 };
-export const getTrendingMovies = async ({
+export const getMoviesTrending = async ({
   time_window,
 }: TrendingMoviesProps) => {
   const response = await axiosInstances.get(
     `/trending/movie/${time_window || "day"}`
   );
-  return response.data as TMDBResponses<TrendingMovies[]>;
+  return response.data as TMDBResponses<MoviesTrending[]>;
 };
 
 type DetailsMoviesProps = {
   movie_id?: number;
 };
-export const getMovieDetails = async ({ movie_id }: DetailsMoviesProps) => {
-  const resDetailsMovie = await axiosInstances
+export const geMovieDetails = async ({ movie_id }: DetailsMoviesProps) => {
+  const movieDetails = await axiosInstances
     .get(`/movie/${movie_id}`)
-    .then((res) => res.data as DetailsMovie);
+    .then((res) => res.data as MovieDetails);
 
-  const resCreditsMovie = await axiosInstances
+  const movieCredits = await axiosInstances
     .get(`/movie/${movie_id}/credits`)
-    .then((res) => res.data as CreditsMovie);
+    .then((res) => res.data as MovieCredits);
 
-  const resImagesMovie = await axiosInstances
+  const movieImages = await axiosInstances
     .get(`/movie/${movie_id}/images`)
-    .then((res) => res.data as ImagesMovie);
+    .then((res) => res.data as MovieImages);
 
-  const resVideosMovie = await axiosInstances
+  const movieVideos = await axiosInstances
     .get(`/movie/${movie_id}/videos`)
-    .then((res) => res.data as VideosMovie);
+    .then((res) => res.data as MovieVideos);
 
-  const resSimilarMovie = await axiosInstances
+  const movieSimilar = await axiosInstances
     .get(`/movie/${movie_id}/similar`)
-    .then((res) => res.data);
+    .then((res) => res.data as MovieSimilar);
 
   const response = {
-    details: resDetailsMovie,
-    credits: resCreditsMovie,
-    images: resImagesMovie,
-    videos: resVideosMovie,
-    similar: resSimilarMovie,
+    details: movieDetails,
+    credits: movieCredits,
+    images: movieImages,
+    videos: movieVideos,
+    similar: movieSimilar,
   };
 
   return response;
