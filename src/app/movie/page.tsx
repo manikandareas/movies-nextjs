@@ -1,11 +1,11 @@
 import AppHeader from "@/components/layout/header";
-import CardsMovie from "@/features/movie/components/cards-movie";
 
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 import "react-circular-progressbar/dist/styles.css";
 import { movieHooks } from "@/features/movie/services/movie.hook";
 import JumbotronSliders from "@/components/homepage/jumbotron-sliders";
+import CardsSection from "@/components/homepage/cards-section";
 
 export default async function MoviesPage() {
   const { queryClient } = movieHooks();
@@ -15,7 +15,7 @@ export default async function MoviesPage() {
       <AppHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
         <JumbotronSliders queryFn="movie" queryKey={["trendingMovies"]} />
-        <CardsMovie />
+        <CardsSection domain="movie" name="Movies" />
       </HydrationBoundary>
     </main>
   );

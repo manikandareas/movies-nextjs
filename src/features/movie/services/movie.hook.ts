@@ -1,7 +1,7 @@
 import {
-  getPopularMovies,
-  getTopRatedMovies,
-  getTrendingMovies,
+  getMoviesPopular,
+  getMoviesTopRated,
+  getMoviesTrending,
 } from "@/services/movies";
 import { QueryClient } from "@tanstack/react-query";
 
@@ -10,16 +10,16 @@ export const movieHooks = () => {
 
   queryClient.prefetchQuery({
     queryKey: ["trendingMovies"],
-    queryFn: () => getTrendingMovies({}),
+    queryFn: () => getMoviesTrending({}),
   });
   queryClient.prefetchQuery({
     queryKey: ["popularMovies"],
-    queryFn: () => getPopularMovies({}),
+    queryFn: () => getMoviesPopular({}),
   });
 
   queryClient.prefetchQuery({
     queryKey: ["topRatedMovies"],
-    queryFn: () => getTopRatedMovies({}),
+    queryFn: () => getMoviesTopRated({}),
   });
 
   return {

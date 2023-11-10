@@ -1,19 +1,20 @@
 "use client";
-import { getPopularMovies, getTopRatedMovies } from "@/services/movies";
-import { useQueries } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
-import CardMovieContent from "./card-movie-content";
+
+import { useState } from "react";
+import CardsItem from "./cards-item";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
 import { buttonVariants } from "@/components/ui/button";
+import { useMoviesCard, useSeriesCard } from "./cards.hook";
 
-const CardsMovie = () => {
-  const results = useQueries({
-    queries: [
-      { queryKey: ["popularMovies"], queryFn: () => getPopularMovies({}) },
-      { queryKey: ["topRatedMovies"], queryFn: () => getTopRatedMovies({}) },
-    ],
-  });
+const CardsSection = ({
+  domain,
+  name,
+}: {
+  domain: "movie" | "series";
+  name: string;
+}) => {
+  const results = domain === "movie" ? useMoviesCard() : useSeriesCard();
 
   const [activeTab, setActiveTab] = useState<"popular" | "topRated">("popular");
 
@@ -35,7 +36,7 @@ const CardsMovie = () => {
     >
       <div className="w-full px-4 flex flex-col gap-6 md:max-w-7xl mx-auto">
         <TabsList className="flex flex-col md:flex-row gap-1.5 items-center justify-between bg-transparent text-primary mb-10 md:mb-0">
-          <h1 className="uppercase font-bold text-2xl ">Movies</h1>
+          <h1 className="uppercase font-bold text-2xl ">{name}</h1>
           <div className="flex gap-2">
             <TabsTrigger value="popular" asChild>
               <button
@@ -61,7 +62,7 @@ const CardsMovie = () => {
             <article className="grid grid-cols-2 md:grid-cols-4 gap-2">
               {val.data &&
                 val.data.map((data) => (
-                  <CardMovieContent
+                  <CardsItem
                     key={data.id}
                     data={data}
                     date={
@@ -79,4 +80,4 @@ const CardsMovie = () => {
   );
 };
 
-export default CardsMovie;
+export default CardsSection;

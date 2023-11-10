@@ -1,19 +1,19 @@
 "use client";
 import {
-  PopularMovies,
-  PopularSeries,
-  TopRatedMovies,
-  TopRatedSeries,
-} from "@/types/tmdb";
+  MoviesPopular,
+  SeriesPopular,
+  MoviesTopRated,
+  SeriesTopRated,
+} from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CardSliderContent from "./card-slider-content";
 import { useEffect, useState } from "react";
 
-const CardSliderContainer = ({
+const CardSlidersContainer = ({
   data,
   title,
 }: {
-  data: PopularMovies[] | TopRatedMovies[] | PopularSeries[] | TopRatedSeries[];
+  data: MoviesPopular[] | MoviesTopRated[] | SeriesTopRated[] | SeriesPopular[];
   title: string;
 }) => {
   function getWindowSize() {
@@ -67,4 +67,4 @@ const CardSliderContainer = ({
   );
 };
 
-export default CardSliderContainer;
+export default CardSlidersContainer;

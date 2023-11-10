@@ -1,7 +1,7 @@
 import {
-  getPopularSeries,
-  getTopRatedSeries,
-  getTrendingSeries,
+  getSeriesPopular,
+  getSeriesTopRated,
+  getSeriesTrending,
 } from "@/services/series";
 import { QueryClient } from "@tanstack/react-query";
 
@@ -10,16 +10,16 @@ export const tvHooks = () => {
 
   queryClient.prefetchQuery({
     queryKey: ["trendingSeries"],
-    queryFn: () => getTrendingSeries({}),
+    queryFn: () => getSeriesTrending({}),
   });
   queryClient.prefetchQuery({
     queryKey: ["popularSeries"],
-    queryFn: () => getPopularSeries({}),
+    queryFn: () => getSeriesPopular({}),
   });
 
   queryClient.prefetchQuery({
     queryKey: ["topRatedSeries"],
-    queryFn: () => getTopRatedSeries({}),
+    queryFn: () => getSeriesTopRated({}),
   });
 
   return {

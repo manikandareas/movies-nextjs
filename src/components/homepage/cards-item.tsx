@@ -1,13 +1,17 @@
 "use client";
-import { PopularMovies, TopRatedMovies } from "@/types/tmdb";
-import React from "react";
+import {
+  MoviesPopular,
+  MoviesTopRated,
+  SeriesPopular,
+  SeriesTopRated,
+} from "@/types";
 import { CircularProgressbar } from "react-circular-progressbar";
 
-const CardMovieContent = ({
+const CardsItem = ({
   data,
   date,
 }: {
-  data: PopularMovies | TopRatedMovies;
+  data: MoviesPopular | MoviesTopRated | SeriesPopular | SeriesTopRated;
   date: string;
 }) => {
   const { name, poster_path, vote_average, title } = data;
@@ -43,4 +47,4 @@ const CardMovieContent = ({
   );
 };
 
-export default CardMovieContent;
+export default CardsItem;
