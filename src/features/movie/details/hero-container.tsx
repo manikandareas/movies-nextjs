@@ -13,6 +13,7 @@ const HeroContainer = ({ id, domain }: Props) => {
     domain === "movie" ? useMovieDetails(id) : useSeriesDetails(id);
   return (
     <>
+      <div className="absolute inset-0 bg-black/5 w-full h-full " />
       <section
         className="w-full min-h-screen  bg-cover bg-center bg-fixed flex items-end justify-center "
         style={{

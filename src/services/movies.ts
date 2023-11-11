@@ -9,6 +9,7 @@ import {
   MoviesTopRated,
   MoviesTrending,
   MovieVideos,
+  Movies,
 } from "@/types";
 
 interface PopularMoviesProps {
@@ -82,4 +83,9 @@ export const getMovieDetails = async ({ movie_id }: DetailsMoviesProps) => {
     similar: movieSimilar,
   };
   return response;
+};
+
+export const getListsMoviesByQuery = async (query: string) => {
+  const response = await axiosInstances.get(`/search/movie?query=${query}`);
+  return response.data as TMDBResponses<Movies[]>;
 };

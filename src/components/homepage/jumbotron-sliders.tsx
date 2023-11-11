@@ -44,28 +44,20 @@ const JumbotronSliders = (props: Props) => {
 
   return (
     <Swiper grabCursor={true}>
-      {!isLoading
-        ? data?.results.map((movie) => (
-            <SwiperSlide className="" key={movie.id}>
-              <JumbotronSlider
-                backdrop_path={movie.backdrop_path}
-                name={movie.name}
-                title={movie.title}
-                genres={movie.genre_ids}
-                overview={movie.overview}
-                vote_average={movie.vote_average}
-                domain={domain}
-                movieId={movie.id}
-              />
-            </SwiperSlide>
-          ))
-        : Array()
-            .fill(10)
-            .map((_, idx) => (
-              <SwiperSlide key={idx}>
-                <JumbotronLoading />
-              </SwiperSlide>
-            ))}
+      {data?.results.map((movie) => (
+        <SwiperSlide className="" key={movie.id}>
+          <JumbotronSlider
+            backdrop_path={movie.backdrop_path}
+            name={movie.name}
+            title={movie.title}
+            genres={movie.genre_ids}
+            overview={movie.overview}
+            vote_average={movie.vote_average}
+            domain={domain}
+            movieId={movie.id}
+          />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

@@ -9,6 +9,7 @@ import {
   TMDBResponses,
   SeriesTopRated,
   SeriesTrending,
+  TVSeries,
 } from "@/types";
 
 interface PopularProps {
@@ -80,4 +81,9 @@ export const getSeriesDetails = async ({ series_id }: DetailsSeriesProps) => {
     similar: seriesSimilar,
   };
   return response;
+};
+
+export const getListsSeriesByQuery = async (query: string) => {
+  const response = await axiosInstances.get(`/search/tv?query=${query}`);
+  return response.data as TMDBResponses<TVSeries[]>;
 };
