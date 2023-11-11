@@ -11,7 +11,7 @@ const DetailMoviePage = ({ params }: { params: { movieId: string } }) => {
     <main className="relative">
       <AppHeader />
       {/* Background parallax */}
-      <HeroContainer movieId={+params.movieId} />
+      <HeroContainer id={+params.movieId} domain={"movie"} />
 
       {/* <div className="w-screen h-screen bg-black"></div> */}
     </main>
