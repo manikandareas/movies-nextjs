@@ -19,6 +19,7 @@ const SearchPage = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const params = new URLSearchParams(searchParams);
 
   const data =
     searchParams.get("query") && activeButton === "movie"
@@ -26,7 +27,6 @@ const SearchPage = () => {
       : useSearchSeries(searchParams.get("query")?.toString() || "");
 
   const handleInput = useDebouncedCallback((term: string) => {
-    const params = new URLSearchParams(searchParams);
     if (term) {
       params.set("query", term);
       params.set("search", activeButton);
