@@ -7,14 +7,14 @@ import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 import "react-circular-progressbar/dist/styles.css";
 
-export default async function Home() {
+export default function Home() {
   const { queryClient } = homeHooks();
 
   return (
     <main className="relative">
       <AppHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <JumbotronSliders queryFn="all" queryKey={["trendingAll"]} />
+        <JumbotronSliders domain="movie" queryKey={["trendingMovies"]} />
         <CardsSlider />
       </HydrationBoundary>
     </main>

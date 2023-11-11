@@ -14,7 +14,7 @@ export default async function SeriesPage() {
     <main className="relative">
       <AppHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <JumbotronSliders queryFn="series" queryKey={["trendingSeries"]} />
+        <JumbotronSliders domain="series" queryKey={["trendingSeries"]} />
         <CardsSection name="TV SERIES" domain="series" />
       </HydrationBoundary>
     </main>

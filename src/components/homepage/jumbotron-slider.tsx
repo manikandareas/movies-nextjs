@@ -8,6 +8,7 @@ import {
   getMovieGenreById,
   getSeriesGenreById,
 } from "@/common/lib/utils";
+import Link from "next/link";
 
 interface Props {
   backdrop_path: string;
@@ -16,6 +17,8 @@ interface Props {
   vote_average: number;
   title: string;
   genres: number[];
+  domain: "movie" | "all" | "series";
+  movieId: number;
 }
 const JumbotronSlider = ({
   title,
@@ -24,6 +27,8 @@ const JumbotronSlider = ({
   overview,
   genres,
   vote_average,
+  domain,
+  movieId,
 }: Props) => {
   const { theme } = useTheme();
 
@@ -76,10 +81,13 @@ const JumbotronSlider = ({
           {convertToMaxLengthDescription(overview, 300)}
         </p>
 
-        <button className="px-4 py-2 bg-red-600 w-fit flex items-center rounded-sm font-semibold text-sm gap-1.5 text-white">
+        <Link
+          href={`/${domain}/${movieId}`}
+          className="px-4 py-2 bg-red-600 w-fit flex items-center rounded-sm font-semibold text-sm gap-1.5 text-white"
+        >
           <Play fill="white" size={12} />
           <span>WATCH NOW</span>
-        </button>
+        </Link>
       </article>
     </div>
   );

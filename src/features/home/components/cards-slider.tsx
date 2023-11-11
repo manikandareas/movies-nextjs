@@ -4,7 +4,7 @@ import { useQueries } from "@tanstack/react-query";
 import CardSliderContainer from "./card-slider-container";
 import { getMoviesPopular, getMoviesTopRated } from "@/services/movies";
 import { getSeriesPopular, getSeriesTopRated } from "@/services/series";
-import { getTitleWithIndex } from "@/common/lib/utils";
+import { getDomainWithIndex, getTitleWithIndex } from "@/common/lib/utils";
 
 const CardsSlider = () => {
   const results = useQueries({
@@ -25,6 +25,7 @@ const CardsSlider = () => {
               key={idx}
               data={result.data.results}
               title={getTitleWithIndex(idx)}
+              domain={getDomainWithIndex(idx)!}
             />
           )
       )}

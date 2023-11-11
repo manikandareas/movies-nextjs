@@ -65,6 +65,7 @@ const CardsSection = ({
                   <CardsItem
                     key={data.id}
                     data={data}
+                    domain={domain}
                     date={
                       data.release_date
                         ? data.release_date

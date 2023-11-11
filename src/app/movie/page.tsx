@@ -14,7 +14,7 @@ export default async function MoviesPage() {
     <main className="relative">
       <AppHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <JumbotronSliders queryFn="movie" queryKey={["trendingMovies"]} />
+        <JumbotronSliders domain="movie" queryKey={["trendingMovies"]} />
         <CardsSection domain="movie" name="Movies" />
       </HydrationBoundary>
     </main>

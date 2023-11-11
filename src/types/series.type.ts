@@ -61,6 +61,7 @@ export interface SeriesDetails {
     still_path: string;
   };
   name: string;
+  title: string;
   next_episode_to_air: string;
   networks: {
     id: number;

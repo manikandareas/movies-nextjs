@@ -31,6 +31,19 @@ export const getTitleWithIndex = (index: number) => {
   }
 };
 
+export const getDomainWithIndex = (index: number) => {
+  switch (index) {
+    case 0:
+      return "movie";
+    case 1:
+      return "series";
+    case 2:
+      return "movie";
+    case 3:
+      return "series";
+  }
+};
+
 export const getMovieGenreById = (id: number) => {
   for (const genre of movieGenres) {
     if (genre.id === id) {

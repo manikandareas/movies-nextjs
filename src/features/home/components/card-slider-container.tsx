@@ -12,9 +12,11 @@ import { useEffect, useState } from "react";
 const CardSlidersContainer = ({
   data,
   title,
+  domain,
 }: {
   data: MoviesPopular[] | MoviesTopRated[] | SeriesTopRated[] | SeriesPopular[];
   title: string;
+  domain: "movie" | "series";
 }) => {
   function getWindowSize() {
     const { innerWidth, innerHeight } = window;
@@ -46,22 +48,32 @@ const CardSlidersContainer = ({
         slidesPerView={windowSize.innerWidth < 762 ? 2 : 4}
         style={{ width: "100%", height: "max-content" }}
       >
-        {data.map((movie) => (
-          <SwiperSlide
-            key={movie.id}
-            className="md:h-[33rem] w-full"
-            style={{ width: "100%", maxHeight: "33rem" }}
-          >
-            <CardSliderContent
-              poster_path={movie.poster_path}
-              name={movie.name}
-              overview={movie.overview}
-              vote_average={movie.vote_average}
-              title={movie.title}
-              date={movie.release_date || movie.first_air_date}
-            />
-          </SwiperSlide>
-        ))}
+        {data.map(
+          (
+            movie:
+              | MoviesPopular
+              | MoviesTopRated
+              | SeriesPopular
+              | SeriesTopRated
+          ) => (
+            <SwiperSlide
+              key={movie.id}
+              className="md:h-[33rem] w-full"
+              style={{ width: "100%", maxHeight: "33rem" }}
+            >
+              <CardSliderContent
+                poster_path={movie.poster_path}
+                name={movie.name}
+                overview={movie.overview}
+                vote_average={movie.vote_average}
+                title={movie.title}
+                date={movie.release_date || movie.first_air_date}
+                domain={domain}
+                movieId={movie.id}
+              />
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
     </article>
   );

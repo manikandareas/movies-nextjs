@@ -12,7 +12,7 @@ export const headerLists = [
   },
   {
     name: "tv series",
-    path: "/tv",
+    path: "/series",
   },
   {
     name: "search",
@@ -36,7 +36,7 @@ export const asideMenus = [
       },
       {
         name: "tv series",
-        path: "/tv",
+        path: "/series",
         icon: Tv,
       },
       {

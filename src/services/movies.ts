@@ -44,7 +44,16 @@ export const getMoviesTrending = async ({
 type DetailsMoviesProps = {
   movie_id?: number;
 };
-export const geMovieDetails = async ({ movie_id }: DetailsMoviesProps) => {
+
+export type MovieDetailsResponse = {
+  details: MovieDetails;
+  credits: MovieCredits;
+  images: MovieImages;
+  videos: MovieVideos;
+  similar: MovieSimilar;
+};
+
+export const getMovieDetails = async ({ movie_id }: DetailsMoviesProps) => {
   const movieDetails = await axiosInstances
     .get(`/movie/${movie_id}`)
     .then((res) => res.data as MovieDetails);
@@ -72,6 +81,5 @@ export const geMovieDetails = async ({ movie_id }: DetailsMoviesProps) => {
     videos: movieVideos,
     similar: movieSimilar,
   };
-
   return response;
 };

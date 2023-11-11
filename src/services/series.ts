@@ -42,6 +42,15 @@ export const getSeriesTrending = async ({
 type DetailsSeriesProps = {
   series_id?: number;
 };
+
+export type SeriesDetailsResponse = {
+  details: SeriesDetails;
+  credits: SeriesCredits;
+  images: SeriesImages;
+  videos: SeriesVideos;
+  similar: SeriesSimilar;
+};
+
 export const getSeriesDetails = async ({ series_id }: DetailsSeriesProps) => {
   const seriesDetails = await axiosInstances
     .get(`/tv/${series_id}`)

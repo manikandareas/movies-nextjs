@@ -9,13 +9,13 @@ export const useHeader = () => {
         document.querySelectorAll("header")?.forEach((el) => {
           el.classList.add("bg-white");
           el.classList.add("dark:bg-black");
-          el.classList.add("dark:bg-none");
+          el.classList.remove("dark:bg-none");
         });
       } else if (window.screenY < 60) {
         document.querySelectorAll("header")?.forEach((el) => {
+          el.classList.add("dark:bg-none");
           el.classList.remove("bg-white");
           el.classList.remove("dark:bg-black");
-          el.classList.remove("dark:bg-none");
         });
       }
     });
