@@ -27,7 +27,7 @@ export async function generateMetadata(
     description: series.overview,
     openGraph: {
       images: [
-        `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
+        `https://image.tmdb.org/t/p/original/${series.backdrop_path}`,
         ...previousImages,
       ],
     },
