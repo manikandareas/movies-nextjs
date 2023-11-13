@@ -7,6 +7,13 @@ import { tvHooks } from "@/features/tv/services/tv.hook";
 import JumbotronSliders from "@/components/homepage/jumbotron-sliders";
 import CardsSection from "@/components/homepage/cards-section";
 
+import { Metadata } from "next";
+import { myMetadata } from "@/components/meta/Metadata";
+
+export const metadata: Metadata = {
+  ...myMetadata,
+  title: "TV Series - Madia",
+};
 export default async function SeriesPage() {
   const { queryClient } = tvHooks();
 

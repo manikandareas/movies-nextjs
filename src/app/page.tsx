@@ -9,6 +9,12 @@ import { Suspense } from "react";
 
 import "react-circular-progressbar/dist/styles.css";
 import Loading from "./loading";
+import { Metadata } from "next";
+import { myMetadata } from "@/components/meta/Metadata";
+
+export const metadata: Metadata = {
+  ...myMetadata,
+};
 
 export default function Home() {
   const { queryClient } = homeHooks();

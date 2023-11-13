@@ -6,7 +6,13 @@ import "react-circular-progressbar/dist/styles.css";
 import { movieHooks } from "@/features/movie/services/movie.hook";
 import JumbotronSliders from "@/components/homepage/jumbotron-sliders";
 import CardsSection from "@/components/homepage/cards-section";
+import { Metadata } from "next";
+import { myMetadata } from "@/components/meta/Metadata";
 
+export const metadata: Metadata = {
+  ...myMetadata,
+  title: "Movie - Madia",
+};
 export default async function MoviesPage() {
   const { queryClient } = movieHooks();
 
